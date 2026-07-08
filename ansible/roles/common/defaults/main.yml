@@ -1,0 +1,11 @@
+---
+common_packages:
+  - curl
+  - vim
+  - htop
+
+common_ntp_service: chronyd
+
+common_directories:
+  - /opt/iac-framework
+  - /var/log/iac-framework

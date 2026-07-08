@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "infrastructure-automation-framework"
+version = "0.1.0"
+description = "Python framework that orchestrates Terraform and Ansible, with built-in infrastructure drift detection"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Abhishek Sawant" }]
+keywords = ["iac", "terraform", "ansible", "drift-detection", "devops", "automation"]
+dependencies = [
+    "click>=8.1",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5", "black>=24.0", "pre-commit>=3.7"]
+
+[project.scripts]
+iac = "iac_framework.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/abhisheksawant52/infrastructure-automation-framework"
+Issues = "https://github.com/abhisheksawant52/infrastructure-automation-framework/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -1,0 +1,14 @@
+# Copy to terraform.tfvars (or use environments/<env>/<env>.tfvars) and
+# adjust values for your environment. Do not commit real tfvars files with
+# sensitive values.
+
+aws_region         = "us-east-1"
+environment        = "dev"
+vpc_cidr           = "10.0.0.0/16"
+availability_zones = ["us-east-1a", "us-east-1b"]
+instance_type      = "t3.micro"
+
+tags = {
+  Project = "infrastructure-automation-framework"
+  Owner   = "platform-team"
+}

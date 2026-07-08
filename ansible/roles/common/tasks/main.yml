@@ -1,0 +1,18 @@
+---
+- name: Ensure baseline packages are installed
+  ansible.builtin.package:
+    name: "{{ common_packages }}"
+    state: present
+
+- name: Ensure the time-sync service is running
+  ansible.builtin.service:
+    name: "{{ common_ntp_service }}"
+    state: started
+    enabled: true
+
+- name: Ensure common application directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ common_directories }}"

@@ -1,7 +1,15 @@
-
 ---
-- hosts: all
-  become: yes
-  tasks:
-    - name: Ping
-      ping:
+# Top-level playbook invoked by iac_framework.orchestrator.Orchestrator.configure()
+# and by `iac ansible --env <environment>`.
+
+- name: Configure web tier
+  hosts: web
+  become: true
+  roles:
+    - common
+
+- name: Configure database tier
+  hosts: db
+  become: true
+  roles:
+    - common
